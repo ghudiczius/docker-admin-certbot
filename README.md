@@ -5,7 +5,7 @@ Simple Certbot docker image with PostgreSQL client.
 ## Usage
 
 ```sh
-docker run --rm registry.gitlab.jmk.hu/admin /certbot:<VERSION>
+docker run --rm registry.gitlab.jmk.hu/admin/certbot:<VERSION>
 ```
 
 or
