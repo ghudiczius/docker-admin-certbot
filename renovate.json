@@ -1,0 +1,31 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "commitMessagePrefix": "renovate:",
+  "customManagers": [{
+    "customType": "regex",
+    "datasourceTemplate": "repology",
+    "fileMatch": [
+      "^.gitlab-ci\\.ya?ml$"
+    ],
+    "matchStrings": [
+      "#\\s*renovate:\\s*datasource=repology\\s*depName=(?<depName>alpine.*?)\\s*versioning=(?<versioning>.*?)\\s*.*?_VERSION:\\s*\"(?<currentValue>.*)\""
+    ]
+  }],
+  "packageRules": [{
+    "autoApprove": true,
+    "matchUpdateTypes": [
+      "major"
+    ]
+  }, {
+    "automerge": true,
+    "matchUpdateTypes": [
+      "minor"
+    ]
+  }, {
+    "automerge": true,
+    "automergeType": "branch",
+    "matchUpdateTypes": [
+      "patch"
+    ]
+  }]
+}
