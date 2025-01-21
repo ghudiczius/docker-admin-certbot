@@ -1,5 +1,6 @@
-ARG VERSION
+FROM certbot/certbot:v2.11.0
 
-FROM certbot/certbot:${VERSION}
+ARG POSTGRESQL_VERSION
 
-RUN apk add --no-cache --update postgresql-client
+RUN apk add --no-cache --update \
+    "postgresql${POSTGRESQL_VERSION%.*}-client"="${POSTGRESQL_VERSION}"
