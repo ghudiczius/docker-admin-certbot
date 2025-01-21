@@ -1,7 +1,7 @@
 ---
 variables:
   DOCKER_HUB_IMAGE: "${DOCKER_HUB_USERNAME}/${CI_PROJECT_NAME}"
-  # renovate: datasource=repology depName=alpine_3_18/ansible versioning=loose
+  # renovate: datasource=repology depName=alpine_3_20/ansible versioning=loose
   POSTGRESQL_VERSION: "15.10-r0"
 
 stages:
