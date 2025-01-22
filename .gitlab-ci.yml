@@ -1,6 +1,8 @@
 ---
 variables:
   DOCKER_HUB_IMAGE: "${DOCKER_HUB_USERNAME}/${CI_PROJECT_NAME}"
+  # renovate: datasource=docker depName=certbot/certbot
+  CERTBOT_VERSION: "v3.1.0"
   # renovate: datasource=repology depName=alpine_3_20/ansible versioning=loose
   POSTGRESQL_VERSION: "15.10-r0"
 
@@ -42,8 +44,8 @@ kaniko:
       }
     }" > /kaniko/.docker/config.json
   - /kaniko/executor --build-arg="POSTGRESQL_VERSION=${POSTGRESQL_VERSION}" --context="${CI_PROJECT_DIR}" --destination="${CI_REGISTRY_IMAGE}:${RSYNC_VERSION%-*}-alpine${ALPINE_VERSION}-${CI_PIPELINE_IID}" --destination="${DOCKER_HUB_IMAGE}:${RSYNC_VERSION%-*}-alpine${ALPINE_VERSION}-${CI_PIPELINE_IID}" --dockerfile="${CI_PROJECT_DIR}/Dockerfile"
-  - echo "Successfully published new image ${CI_REGISTRY_IMAGE}:${RSYNC_VERSION%-*}-alpine${ALPINE_VERSION}-${CI_PIPELINE_IID}"
-  - echo "Successfully published new image ${DOCKER_HUB_IMAGE}:${RSYNC_VERSION%-*}-alpine${ALPINE_VERSION}-${CI_PIPELINE_IID}"
+  - echo "Successfully published new image ${CI_REGISTRY_IMAGE}:${CERTBOT_VERSION%-*}-${CI_PIPELINE_IID}"
+  - echo "Successfully published new image ${DOCKER_HUB_IMAGE}:${CERTBOT_VERSION%-*}- ${CI_PIPELINE_IID}"
   stage: build
   tags:
   - kubernetes
