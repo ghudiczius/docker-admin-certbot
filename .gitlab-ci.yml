@@ -6,6 +6,13 @@ variables:
   # renovate: datasource=repology depName=alpine_3_20/ansible versioning=loose
   POSTGRESQL_VERSION: "15.10-r0"
 
+workflow:
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    - if: $CI_COMMIT_BRANCH && $CI_OPEN_MERGE_REQUESTS
+      when: never
+    - if: $CI_COMMIT_BRANCH
+
 stages:
 - test
 - build
