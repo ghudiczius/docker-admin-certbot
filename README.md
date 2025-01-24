@@ -5,11 +5,11 @@ Simple docker image for Certbot without any bloat, built on the official alpine 
 ## Usage
 
 ```sh
-docker run --rm registry.gitlab.jmk.hu/admin/certbot:<VERSION>
+docker run --rm ghudiczius/certbot:<VERSION>
 ```
 
 or
 
 ```sh
-docker run --rm ghudiczius/certbot:<VERSION>
+docker run --rm registry.gitlab.jmk.hu/admin/certbot:<VERSION>
 ```
