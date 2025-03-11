@@ -1,4 +1,4 @@
-FROM certbot/certbot:v3.2.0
+FROM certbot/certbot:v3.3.0
 
 ARG POSTGRESQL_VERSION
 
