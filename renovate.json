@@ -3,6 +3,30 @@
   "commitMessagePrefix": "renovate:",
   "customManagers": [{
     "customType": "regex",
+    "datasourceTemplate": "docker",
+    "depNameTemplate": "docker.io/certbot/certbot",
+    "fileMatch": [
+      "^.gitlab-ci\\.ya?ml$"
+    ],
+    "matchStrings": [
+      "#\\s*renovate:\\s*datasource=docker\\s*depName=alpine\\s*CERTBOT_VERSION:\\s*\"(?<currentValue>.*)\""
+    ],
+    "versioningTemplate": "semver"
+  }, {
+    "autoReplaceStringTemplate": "# renovate: datasource=repology depName=alpine_{{{newMajor}}}_{{{newMinor}}}",
+    "customType": "regex",
+    "currentValueTemplate": "{{{ replace '_' '.' currentValue }}}",
+    "datasourceTemplate": "docker",
+    "depNameTemplate": "docker.io/library/alpine",
+    "fileMatch": [
+      "^.gitlab-ci\\.ya?ml$"
+    ],
+    "matchStrings": [
+      "#\\s*renovate:\\s*datasource=repology\\s*depName=alpine_(?<currentValue>\\d+[._]\\d+)"
+    ],
+    "versioningTemplate": "regex:^(?<major>\\d+)[._](?<minor>\\d+)$"
+  }, {
+    "customType": "regex",
     "datasourceTemplate": "repology",
     "fileMatch": [
       "^.gitlab-ci\\.ya?ml$"
@@ -26,6 +50,11 @@
     "automergeType": "branch",
     "matchUpdateTypes": [
       "patch"
+    ]
+  }, {
+    "groupName": "dependencies",
+    "matchBaseBranches": [
+      "master"
     ]
   }]
 }
