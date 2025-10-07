@@ -3,7 +3,7 @@ variables:
   DOCKER_HUB_IMAGE: "${DOCKER_HUB_USERNAME}/${CI_PROJECT_NAME}"
   # renovate: datasource=docker depName=certbot/certbot
   CERTBOT_VERSION: "v5.0.0"
-  # renovate: datasource=repology depName=alpine_3_20/postgresql versioning=loose
+  # renovate: datasource=repology depName=alpine_3_22/postgresql versioning=loose
   POSTGRESQL_VERSION: "15.14-r0"
 
 workflow:
